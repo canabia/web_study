@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js "></script>
 
 </head>
 <body>
@@ -21,23 +21,39 @@
     <h3 id="title">정말 간단 to do 리스트</h3>
     <div id="sub-container">
       <ul class="list-group" id="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center" id="list-item">
+        <li class="list-group-item d-flex justify-content-between align-items-center" id="list-group-item">
           오늘의 할 일 목록 하나!!
-          <span class="badge text-bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center" id="list-item">
-          오늘의 할 일 목록 하나!!
-          <span class="badge text-bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center" id="list-item">
-          오늘의 할 일 목록 하나!!
-          <span class="badge text-bg-primary rounded-pill">14</span>
+          <span class="badge text-bg-primary rounded-pill" onclick="deleteTodo()">삭제</span>
         </li>
       </ul>
     </div>
     <div class="input-group mb-3" id="input-group">
       <input type="text" class="form-control" id="input-area">
-      <button class="btn btn-outline-secondary" type="button" id="button-area">Button</button>
+      <button class="btn btn-outline-secondary" type="button" id="button-area" onclick="addTodo()">추가</button>
     </div>
+  </div>
+
+  <script>
+      function addTodo(){
+        let todo=$("#input-area").val();
+        console.log(todo)
+        let id=Math.floor(Math.random()*1000)
+        console.log(id) 
+          
+
+       let list_item=`<li class="list-group-item d-flex justify-content-between align-items-center list-${id}" id="list-group-item">
+          ${todo}
+          <span class="badge text-bg-primary rounded-pill" onclick="deleteTodo(${id})">삭제</span>
+        </li>`
+      
+        $("#list-group").append(list_item)
+        $("#input-area").val('')
+      }
+
+
+      function deleteTodo(id){
+        $(".list-"+id).remove()
+      }
+  </script>
 </body>
 </html>
