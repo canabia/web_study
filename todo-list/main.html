@@ -19,7 +19,7 @@
 <body>
   <div class="container" id="container">
     <h3 id="title">정말 간단 to do 리스트</h3>
-    <div id="sub-container">
+    <div id="sub-container">s
       <ul class="list-group" id="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center" id="list-group-item">
           오늘의 할 일 목록 하나!!
@@ -34,6 +34,24 @@
   </div>
 
   <script>
+
+    $(document).ready(function(){
+      console.log("시작")
+
+      $.ajax({
+        url:"https://api.themoviedb.org/3/movie/popular?api_key=10923b261ba94d897ac6b81148314a3f&page=1",
+        data:{},
+        type:"GET",
+        success:function(json){
+          console.log(json)
+          json.results
+        },
+        error:function(err){
+          
+        }
+      })
+    })
+
       function addTodo(){
         let todo=$("#input-area").val();
         console.log(todo)
