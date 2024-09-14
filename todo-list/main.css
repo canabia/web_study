@@ -9,6 +9,15 @@ body{
   text-align:center;
 }
 
+#container_card{
+  display: inline-block;
+  width:30%;
+  height:300px;
+  margin-top:300px;
+  text-align:center;
+  float:left;
+}
+
 #title{
   color:white;
 }
